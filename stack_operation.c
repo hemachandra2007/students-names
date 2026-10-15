@@ -1,56 +1,78 @@
-#include<stdio.h>
+#include <stdio.h>
 #define max 5
+
 int main()
 {
-     int choice;
-     int a[max];
-     printf("stack operation");
-     printf("1. INSERT\n");
-     printf("2. DELETE\n");
-     printf("3. peek\n");
-     printf("4. DISPLAY\n");
-     printf("enter your choice:");
-     scanf("%d",&choice);
+    int choice, top = -1;
+    int a[max];
 
-     switch(choice)
-      {
-     case 1: 
-         void push();
-         {
-          int top, value;
-         
-          if(top==max-1)
-          {
-             printf("overflow\n");
-          }
-            else 
-          {printf("enter the element that you need to push:\n");
-          scanf("%d",&value);
-          a[++top]=value;
-          }
-         }
-      break;
-       
-      case  2:
-        void pop();
-        int top=-1,value;
+    printf("\nStack Operations\n");
+    printf("1. INSERT\n");
+    printf("2. DELETE\n");
+    printf("3. PEEK\n");
+    printf("4. DISPLAY\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
 
-        if(top==max)
-        printf("underflow");
-        top--;
-        printf("the element is deleted from top:\n");
-        scanf("%d",&value);
-      break;
+    switch (choice)
+   do {
+        case 1:
+            if (top == max - 1)
+            {
+                printf("Overflow\n");
+            }
+            else
+            {
+                int value;
+                printf("Enter the element to push: ");
+                scanf("%d", &value);
+                top++;
+                a[top] = value;
+                printf("Element inserted successfully\n");
+            }
+            break;
 
-      case 3:peek();
-      break;
+        case 2:
+            if (top == -1)
+            {
+                printf("Underflow\n");
+            }
+            else
+            {
+                printf("The deleted element is: %d\n", a[top]);
+                top--;
+            }
+            break;
 
-      case 4:void display();
-         int value;
+        case 3:
+            if (top == -1)
+            {
+                printf("Stack is empty\n");
+            }
+            else
+            {
+                printf("Top element: %d\n", a[top]);
+            }
+            break;
 
-      break;
+        case 4:
+            if (top == -1)
+            {
+                printf("Stack is empty\n");
+            }
+            else
+            {
+                printf("Stack elements are:\n");
+                for (int i = top; i >= 0; i--)
+                {
+                    printf("%d\n", a[i]);
+                }
+            }
+            break;
 
-      default  :Invalid choice;
-      }
-      return0;
-}
+        default:
+            printf("Invalid choice\n");
+    }while(choice<5 && choice>0);
+
+    return 0;
+   }
